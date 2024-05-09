@@ -1,0 +1,141 @@
+COINBASE HACKERRANK TECHNICAL INTERVIEW
+----------------------------------------
+
+You operate a marketplace for buying & selling used textbooks. For a given
+textbook, e.g. “Theory of Cryptography,” there are people who want to buy this
+textbook and people who want to sell.
+
+	Offers to BUY: $100, $100, $99, $99, $97, $90
+	Offers to SELL: $109, $110, $110, $114, $115, $119
+
+A match occurs when two people agree on a price. Some new offers do not match.
+These offers should be added to the active set of offers. For example:
+
+Tim offers to SELL at $150. No one is willing to buy at that price so we save
+the offer.
+
+	Offers to SELL: $109, $110, $110, $114, $115, $119, $150
+
+When matching we want to give the customer the “best price”. Example
+matches:
+
+If Jane offers to BUY at $120, she will match and buy a book for $109 (the
+lowest offer to sell is the best price). The sell offers should be updated to
+reflect the match
+
+	Offers to SELL: $110, $110, $114, $115, $119, $150
+
+If Connie offers to SELL at $99 she will match and sell her book for $100 (the
+highest offer to buy is the best price). The buy offers should be updated to
+reflect the match
+
+	Offers to BUY: $100, $99, $99, $97, $90
+
+Our system will need to:
+
+	Accept incoming offers to buy & sell
+	
+		Output if the price matches	
+	
+	Keep an updated lists of buys & sells
+
+
+MY SOLUTION:
+------------
+
+class Market:
+    
+    def __init__(self):
+        self.buys = []
+        self.sells = []
+        self.buyExpireTimes = []
+        self.sellExpireTimes = []
+    
+    def currentTime(self) -> int:
+        pass
+        
+    
+    def updateBuys(self, newOffer: int):
+        
+        
+        for i, v in enumerate(self.buys):
+            
+            if v > newOffer:
+                
+                self.buys = self.buys[:i] + [newOffer] + self.buys[i:]
+                return
+        
+        self.buys.append(newOffer)
+
+                
+                
+    def updateSells(self, newOffer: int, expireTime: int):
+        
+        for i, v in enumerate(self.sells):
+            
+            if v > newOffer:
+                self.sells = self.sells[:i] + [newOffer] + self.sells[i:]
+                return
+        
+        self.sells.append(newOffer)
+                
+                
+    def matchBuyOffer(self, offer: int, ):
+        
+        lowest = self.sells[0] if len(self.sells) != 0 else float('inf')
+        i = 0
+        while self.sellExpireTimes[i] < self.currentTime():
+            i += 1
+        
+        lowest = self.sells[i]                
+        
+        if lowest > offer:
+            self.updateBuys(offer)
+            return None
+        
+        self.sells.pop(0)
+        
+        return lowest
+        
+    def matchSellOffer(self, offer: int):
+        
+        highest = self.buys[-1] if len(self.buys) != 0 else float('-inf')
+        i = len(self.buys) - 1
+        
+        while self.buyExpireTimes[i] < self.currentTime():
+            i -= 1
+        
+            
+        highest = self.buys[i]
+        
+        if highest < offer:
+            self.updateSells(offer)
+            return None
+        
+        self.buys.pop()
+        
+        return highest
+
+        
+if __name__ == "__main__":
+    
+    market = Market()
+    
+    
+    market.matchBuyOffer(100)
+    market.matchBuyOffer(120)
+    # print(market.buys)
+    assert market.matchSellOffer(90) == 120
+    
+    market.matchSellOffer(140)
+    market.matchSellOffer(150)
+    assert market.matchBuyOffer(160) == 140
+    
+    assert market.matchBuyOffer(0) == None
+
+
+NOTES:
+------
+	- Talked about binary insert, then binary search tree, then finally Min/Max
+	  Heap. 
+	- 

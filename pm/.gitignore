@@ -1,0 +1,7 @@
+*.dSYM
+a.out
+pm
+*.o
+.DS_Store
+.vscode/
+test.sh

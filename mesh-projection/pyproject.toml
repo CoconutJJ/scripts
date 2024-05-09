@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "mesh-projection"
+version = "0.1.0"
+description = ""
+authors = ["David Yue <davidyue5819@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mesh_projection"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.25.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
