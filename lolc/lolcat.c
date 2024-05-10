@@ -92,9 +92,11 @@ void initialize (FILE *fp, struct configuration *config)
 
 gradientf parse_gradient_function (char *grad_name)
 {
-        if (strcmp (grad_name, "red_green") == 0) return red_green_grad;
+        if (strcmp (grad_name, "red_green") == 0)
+                return red_green_grad;
 
-        if (strcmp (grad_name, "red_green_blue") == 0) return red_green_blue_grad;
+        if (strcmp (grad_name, "red_green_blue") == 0)
+                return red_green_blue_grad;
 
         return NULL;
 }
@@ -135,7 +137,8 @@ void parse_cmd (int argc, char **argv, struct configuration *config)
                 }
         }
 
-        if (!valid_options) exit (EXIT_FAILURE);
+        if (!valid_options)
+                exit (EXIT_FAILURE);
 
         if (optind == argc) {
                 initialize (stdin, config);
@@ -175,7 +178,9 @@ int main (int argc, char **argv)
 {
         struct configuration config = { .ncols = 0, .nrows = 0, .buffer = NULL, .grad = red_green_blue_grad };
 
-        if (!isatty (STDOUT_FILENO)) { fprintf (stderr, "warning: output file is not a terminal"); }
+        if (!isatty (STDOUT_FILENO)) {
+                fprintf (stderr, "warning: output file is not a terminal");
+        }
 
         parse_cmd (argc, argv, &config);
 
