@@ -1,9 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "mem.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-
-void * reallocate (void *array, size_t new_size)
+void *reallocate (void *array, size_t new_size)
 {
         array = realloc (array, new_size);
 

@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{verbatim}
+\usepackage{minted}
+\usepackage{xcolor}
+\geometry{margin=0.5in}
+
+
+
+\title{Exercises \vspace{-4ex}}
+\date{}
+\begin{document}
+\maketitle
+\begin{enumerate}
+  \item An Internet Protocol (IP) address is a unique 32 bit integer that identifies a
+        host on a computer network. IPv4 is one version of IP addresses that is
+        typically written out as a group of 4 integers seperated by dots.
+
+        e.g: 192.168.0.1
+
+        Each integer above is called an 'octet' (meaning 8 bits wide) and ranges from
+        0-255. The unique 32 bit integer representation for this IPv4 address can be
+        computed by converting all octets to binary, concatenating the binary bits from
+        left to right and interpreting the resulting 32 bit string as a binary integer.
+
+        Examples:
+        \begin{enumerate}
+          \item Convert each octet in 192.168.0.1 to binary
+                \begin{verbatim}
+192 = 11000000 
+168 = 10101000 
+0 = 00000000 
+1 = 00000001
+        \end{verbatim}
+
+          \item Concatenate bits from left to right
+
+                \begin{verbatim}
+11000000101010000000000000000001        
+        \end{verbatim}
+
+          \item Print out 32 bit unsigned integer representation
+                \begin{verbatim}
+3232235521
+\end{verbatim}
+
+        \end{enumerate}
+
+        \textbf{Question:} Write a program called `ip2int` that takes in an IPv4 address and returns
+        it's equivalent unique 32 bit integer.
+
+  \item Endianess refers to the order in which your computer stores the bytes for an
+        integer. In little endian, the bytes are arranged from least significant byte
+        (LSB) to most significant byte (MSB). Whereas, in big endian the bytes are
+        arranged from MSB to LSB.
+
+        In little endian, the 16 bit integer `1` is represented as:
+
+        \begin{tabular}{l | c | c}
+          Address: & 0        & 1        \\
+          Byte:    & 00000001 & 00000000
+        \end{tabular}
+
+        However in big endian, it is
+
+        \begin{tabular}{l | c | c}
+          Address: & 0        & 1        \\
+          Byte:    & 00000000 & 00000001
+        \end{tabular}
+
+        \textbf{Question:} More precisely, in little endian the lowest memory address contains the
+        \_\_\_\_\_, whereas in big endian the lowest memory address contains the
+        \_\_\_\_\_.
+        \begin{enumerate}
+          \item MSB, LSB
+          \item LSB, MSB
+          \item MSB, MSB
+          \item LSB, LSB
+        \end{enumerate}
+
+        Most computers today are little endian. You can verify this with the following
+        program
+
+        \begin{minted}{C}
+bool is_little_endian() {
+
+    int x = 1;
+
+    return *((char*)(&x)) == 1;
+}
+    \end{minted}
+
+        \textbf{Question:} Explain, in plain English, how this program works.
+
+        \textbf{Question:} Write a function called `littleorbig` that takes in a 32
+        bit integer and reverses it's byte order. Effectively converting
+        little-endian to big-endian and vica versa.
+
+        Big endian is also known as 'network byte order'. It is a standard that when
+        integers need to be sent over a network, they are transmitted with the MSB
+        first.
+
+        Please do not confuse endianess with the order of bits in a byte. The order of
+        bits in a byte will always be the same. The 0th bit (rightmost) is always the
+        least significant bit.
+  \item An XOR cipher is an encryption algorithm that uses the XOR operation
+        \(\oplus\). The XOR operation is short for "exclusive-or", meaning "either but
+        not both".
+
+        The truth table for XOR,
+
+        \begin{tabular}{c|c|c}
+          A & B & A \(\oplus\) B \\
+          1 & 0 & 1              \\
+          0 & 1 & 1              \\
+          0 & 0 & 0              \\
+          1 & 1 & 0
+        \end{tabular}
+
+        Notice that $\oplus$ has the following properties,
+        \begin{enumerate}
+          \item Nilpotentcy: $A \oplus A = 0$
+          \item Commutativity: $A \oplus B = B \oplus A$
+        \end{enumerate}
+
+        \textbf{Question:} Given a key $K$ and message $M$, the ciphertext is
+        $K \oplus M$. Write a program called `strxor' that computes $K
+          \oplus M$. If the length of $K$ is less than the length of $M$,
+        concatenate $K$ with itself until it either matches or exceeds the
+        length of $M$.
+
+  \item
+
+\end{enumerate}
+
+\end{document}

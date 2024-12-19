@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/caesar.dir/src/psets/caesar/caesar.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/caesar/caesar.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/caesar/caesar.c",
+  "output": "CMakeFiles/caesar.dir/src/psets/caesar/caesar.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/credit.dir/src/psets/credit/credit.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/credit/credit.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/credit/credit.c",
+  "output": "CMakeFiles/credit.dir/src/psets/credit/credit.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/mario.dir/src/psets/mario/mario.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/mario/mario.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/mario/mario.c",
+  "output": "CMakeFiles/mario.dir/src/psets/mario/mario.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/readability.dir/src/psets/readability/readability.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/readability/readability.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/readability/readability.c",
+  "output": "CMakeFiles/readability.dir/src/psets/readability/readability.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/recover.dir/src/psets/recover/recover.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/recover/recover.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/recover/recover.c",
+  "output": "CMakeFiles/recover.dir/src/psets/recover/recover.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/substitution.dir/src/psets/substitution/substitution.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/substitution/substitution.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/substitution/substitution.c",
+  "output": "CMakeFiles/substitution.dir/src/psets/substitution/substitution.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/tideman.dir/src/psets/tideman/tideman.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/tideman/tideman.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/tideman/tideman.c",
+  "output": "CMakeFiles/tideman.dir/src/psets/tideman/tideman.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/wordle.dir/src/psets/wordle/wordle.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/wordle/wordle.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/wordle/wordle.c",
+  "output": "CMakeFiles/wordle.dir/src/psets/wordle/wordle.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include -I/Users/david/Documents/Programming/scripts/cs50/SYSTEM -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/bulbs.dir/src/psets/bulbs/bulbs.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/bulbs/bulbs.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/bulbs/bulbs.c",
+  "output": "CMakeFiles/bulbs.dir/src/psets/bulbs/bulbs.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/filter-more  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/filter.dir/src/psets/filter-more/filter.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/filter-more/filter.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/filter-more/filter.c",
+  "output": "CMakeFiles/filter.dir/src/psets/filter-more/filter.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/filter-more  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/filter.dir/src/psets/filter-more/helpers.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/psets/filter-more/helpers.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/psets/filter-more/helpers.c",
+  "output": "CMakeFiles/filter.dir/src/psets/filter-more/helpers.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/scrabble.dir/src/labs/scrabble/scrabble.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/labs/scrabble/scrabble.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/labs/scrabble/scrabble.c",
+  "output": "CMakeFiles/scrabble.dir/src/labs/scrabble/scrabble.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/volume.dir/src/labs/volume/volume.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/labs/volume/volume.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/labs/volume/volume.c",
+  "output": "CMakeFiles/volume.dir/src/labs/volume/volume.c.o"
+},
+{
+  "directory": "/Users/david/Documents/Programming/scripts/cs50",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/gcc  -I/Users/david/Documents/Programming/scripts/cs50/include  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o CMakeFiles/inheritance.dir/src/labs/inheritance/inheritance.c.o -c /Users/david/Documents/Programming/scripts/cs50/src/labs/inheritance/inheritance.c",
+  "file": "/Users/david/Documents/Programming/scripts/cs50/src/labs/inheritance/inheritance.c",
+  "output": "CMakeFiles/inheritance.dir/src/labs/inheritance/inheritance.c.o"
+}
+]
