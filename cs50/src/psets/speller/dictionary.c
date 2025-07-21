@@ -1,6 +1,7 @@
 // Implements a dictionary's functionality
 
 #include "dictionary.h"
+#include <_string.h>
 #include <assert.h>
 #include <ctype.h>
 #include <stdbool.h>
@@ -20,20 +21,30 @@ const unsigned int N = 26;
 static size_t dict_size = 0;
 
 // Hash table
-node *table[N];
+node *table[N] = { 0 };
 
 // Returns true if word is in dictionary, else false
 bool check (const char *word)
 {
-        unsigned int h = hash (word) % N;
+        char *word_copy = strdup(word), *current = word_copy;
+
+        while (*current) {
+                *current = tolower(*current);
+                current++;
+        }
+
+        unsigned int h = hash (word_copy) % N;
 
         node *bucket = table[h];
 
         for (; bucket != NULL; bucket = bucket->next) {
-                if (strcmp (bucket->word, word) == 0) {
+                if (strcmp (bucket->word, word_copy) == 0) {
+                        free(word_copy);
                         return true;
                 }
         }
+
+        free(word_copy);
 
         return false;
 }
@@ -41,8 +52,14 @@ bool check (const char *word)
 // Hashes word to a number
 unsigned int hash (const char *word)
 {
-        // TODO: Improve this hash function
-        return toupper (word[0]) - 'A';
+
+        unsigned long hash = 5381;
+        int c;
+
+        while (c = *word++)
+                hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+
+        return hash;
 }
 
 node *create_node (const char *word)
@@ -123,5 +140,16 @@ unsigned int size (void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload (void)
 {
-        return false;
+        for (int i = 0; i < N; i++) {
+                node *current = table[i];
+                while (current) {
+                        node *next = current->next;
+
+                        free (current);
+
+                        current = next;
+                }
+        }
+
+        return true;
 }

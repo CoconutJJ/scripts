@@ -22,6 +22,12 @@ target_link_libraries(filter "${CMAKE_SOURCE_DIR}/lib/libcs50.a")
 target_link_libraries(filter m) # link math library (math.h)
 target_include_directories(filter PUBLIC "${CMAKE_SOURCE_DIR}/filter-more")
 
+
+add_executable(speller "${CMAKE_SOURCE_DIR}/src/psets/speller/speller.c" "${CMAKE_SOURCE_DIR}/src/psets/speller/dictionary.c")
+target_link_libraries(speller "${CMAKE_SOURCE_DIR}/lib/libcs50.a")
+target_include_directories(filter PUBLIC "${CMAKE_SOURCE_DIR}/include")
+
+
 # build all lab solutions
 list(APPEND LAB_FILES scrabble volume inheritance)
 foreach(f IN LISTS LAB_FILES)

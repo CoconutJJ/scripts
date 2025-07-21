@@ -27,6 +27,33 @@ struct configuration {
         gradientf grad;
 };
 
+double lerp (double a, double t, double b)
+{
+        return a + (b - a) * t;
+}
+
+void rgb_lerp (double x, int *r, int *g, int *b)
+{
+        *r = (int)lerp (0, x, 255);
+
+        *b = (int)lerp (0, x, *r);
+
+        *g = (int)lerp (0, x, *b);
+}
+
+void standing_wave (int x, int y, int *r, int *g, int *b, struct configuration *config)
+{
+#define TWO_PI 2 * M_PI
+
+        double _x = ((double)x) / config->ncols, _y = ((double)y) / config->nrows;
+
+        *r = (int)(255 * 0.5 * (sin (_x) + sin (_y)));
+        *g = (int)(255 * 0.5 * (cos (_x) + cos (_y)));
+        *b = (int)(255 * 0.5 * (sin (_x) + cos (_y)));
+
+#undef TWO_PI
+}
+
 int rgb_255 (double p)
 {
         return (int)floor (p * 255.0);
@@ -98,14 +125,17 @@ gradientf parse_gradient_function (char *grad_name)
         if (strcmp (grad_name, "red_green_blue") == 0)
                 return red_green_blue_grad;
 
+        if (strcmp (grad_name, "standing_wave") == 0)
+                return standing_wave;
+
         return NULL;
 }
 
 void parse_cmd (int argc, char **argv, struct configuration *config)
 {
         struct option cmd_args[] = {
-                {"gradient", required_argument, 0, 'g'},
-                {    "help",       no_argument, 0, 'h'}
+                { "gradient", required_argument, 0, 'g' },
+                {     "help",       no_argument, 0, 'h' }
         };
         int opt_index;
         int c;

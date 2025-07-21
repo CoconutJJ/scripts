@@ -13,7 +13,7 @@ void check_key (char *key)
 {
         if (strlen (key) != 26) {
                 fprintf (stderr, "Invalid key");
-                exit(EXIT_FAILURE);
+                exit (EXIT_FAILURE);
         }
 
         int letter_bitmap = 0;
@@ -45,14 +45,20 @@ int main (int argc, char **argv)
                 exit (EXIT_FAILURE);
         }
 
+
         char *key = argv[1];
 
-        check_key(key);
+        check_key (key);
 
-        char *text = get_string ("plaintext:  ");
+        printf ("plaintext:  ");
 
-        printf ("ciphertext: ");
-        while (*text) {
-                putchar (substitution_encrypt (*text++, key));
+        int c, is_first = 1;
+        while ((c = fgetc (stdin)) != '\n') {
+                if (is_first) {
+                        printf ("ciphertext: ");
+                        is_first = 0;
+                }
+
+                putchar (substitution_encrypt (c, key));
         }
 }
