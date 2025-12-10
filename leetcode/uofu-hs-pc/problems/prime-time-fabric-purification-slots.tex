@@ -1,0 +1,57 @@
+\section*{Scheduling the U's Prime-Time Fabric Purification Slots}
+
+At the University of Utah's \textbf{Fabric Purification Sciences Complex} (the
+very serious grad-student laundromat), late-night laundry is in high demand. The
+lab has a limited number of \textbf{prime-time laundry slots} each evening (for
+example, between 8 pm and midnight), and each slot can only handle a certain
+number of loads.
+
+To avoid chaos, the lab runs a sign-up system:
+\begin{itemize}
+    \item There are \(\texttt{S}\) graduate students who want to do laundry.
+    \item The evening is divided into \(\texttt{T}\) \textbf{discrete time
+    slots} (e.g., 8{:}00--8{:}30, 8{:}30--9{:}00, \dots).
+    \item Each time slot \(j\) can handle at most \(\texttt{cap[j]}\) loads
+    (because there are only so many machines and cycles).
+    \item Each student \(i\):
+    \begin{itemize}
+        \item can do \textbf{at most one} load of laundry that night, and
+        \item has a set of time slots they are willing/able to use (based on
+        research meetings, TAing, seminars, etc.).
+    \end{itemize}
+\end{itemize}
+
+The lab wants to \textbf{maximize the number of students} who actually get a
+laundry slot, while respecting all the per-slot limits.
+
+Your task is to determine how many students can be successfully scheduled for
+laundry that night.
+
+\subsection*{Formal Description}
+
+You are given:
+\begin{itemize}
+    \item An integer \(\texttt{S}\) --- the number of students.
+    \item An integer \(\texttt{T}\) --- the number of time slots.
+    \item A list of \(\texttt{T}\) integers \(\texttt{cap[1..T]}\), where
+    \(\texttt{cap[j]}\) is the maximum number of laundry loads that can be
+    handled in time slot \(j\).
+    \item For each student \(i\) (\(1 \le i \le S\)), you are given:
+    \begin{itemize}
+        \item an integer \(\texttt{k\_i}\) --- the number of time slots student
+        \(i\) is willing/able to use, and
+        \item a list of \(\texttt{k\_i}\) distinct integers in the range \([1,
+        T]\) indicating which time slots they can attend.
+    \end{itemize}
+\end{itemize}
+
+\noindent
+Constraints:
+\begin{itemize}
+    \item Each student can be assigned to \textbf{at most one} of the time slots
+    they listed.
+    \item Each time slot \(j\) can be assigned at most \(\texttt{cap[j]}\)
+    students.
+    \item If a student is not assigned to any of their listed slots, they don't
+    get to do laundry that night.
+\end{itemize}

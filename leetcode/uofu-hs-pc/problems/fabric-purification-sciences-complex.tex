@@ -1,0 +1,30 @@
+\section*{The Fabric Purification Sciences Complex at the U}
+
+At the University of Utah, the new Fabric Purification Sciences Complex (the U's
+ultra-serious name for a fancy campus laundromat) is running an experiment in
+the basement of the MEB. Every student who swipes their UCard to start a wash
+cycle generates a data point in a log.
+
+For one day, the system records a sequence of integers. Each integer represents
+the ``grime index'' of a load of laundry, in the exact order the machines
+processed them.
+
+Engineers at the lab have noticed that the system behaves most predictably
+during stretches where this grime index never goes down from one load to the
+next. In other words, starting from some load and moving forward:
+\begin{quote}
+As long as each new load is at least as dirty as the previous one, the lab
+considers that part of the log a stable interval.
+\end{quote}
+
+The number of loads in such an interval is called its \emph{stability score}.
+
+You can start such an interval at any position in the log.
+
+When you hit a load that is less dirty than the previous one, that interval
+ends.
+
+Your job (before you head to Rice--Eccles for the game) is to help the
+researchers figure out how ``stable'' the lab was that day.
+
+They want to know the highest stability score over the entire log.

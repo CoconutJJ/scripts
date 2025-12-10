@@ -1,0 +1,74 @@
+\section*{John's LaundryScript Verifier}
+
+At the University of Utah's \textbf{Kahlert School of Computing}, Professor
+\textbf{John} insists that all serious research must now be done in his new
+domain-specific language:
+
+\begin{quote}
+\textbf{LaundryScript} -- ``A rigorous language for specifying laundry
+transformations.''
+\end{quote}
+
+LaundryScript lets you describe how many loads of laundry are in the
+\textbf{dirty basket} over time. Professor John has also written a
+\textbf{LaundryScript-to-WasherCode compiler} that ``optimizes'' these programs
+so they run faster on the washing machine.
+
+The only  nobody actually trusts the optimizer.
+
+To convince his students the compiler is correct, John wants a tool that checks
+whether the \textbf{original LaundryScript program} and the \textbf{optimized
+version} do the \emph{same thing} to the dirty laundry count.
+
+You've been volunteered.
+
+\subsection*{LaundryScript Semantics}
+
+Both programs start with the \textbf{same initial number of dirty loads} \(L\)
+(an integer).
+
+Then each program executes a sequence of commands, one per line. The allowed
+commands are:
+\begin{itemize}
+    \item \texttt{ADD x}\\
+    Increase the dirty-load count by \(x\). (Think: more loads get dumped in the
+    hamper.)
+
+    \item \texttt{REMOVE x}\\
+    Decrease the dirty-load count by \(x\). (Think: that many loads get fully
+    washed and put away.)
+
+    \item \texttt{DOUBLE}\\
+    Double the current dirty-load count. (Someone dumped a whole extra identical
+    pile onto the existing one.)
+
+    \item \texttt{HALF}\\
+    Replace the current dirty-load count with \(\lfloor L / 2 \rfloor\) (integer
+    division). (Half the laundry vanished due to ``random roommate activity''.)
+\end{itemize}
+
+At no point will the dirty-load count go below zero in any test case.
+
+\subsection*{What You Need to Do}
+
+You are given:
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item The \textbf{initial} dirty-load count \(L\).
+    \item The \textbf{original} LaundryScript program (a sequence of commands).
+    \item The \textbf{optimized} LaundryScript program (another sequence of
+    commands).
+\end{enumerate}
+
+Your job is to:
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item Simulate the original program starting from \(L\) and compute the
+    final number of dirty loads.
+    \item Simulate the optimized program starting from the \textbf{same} \(L\)
+    and compute its final number of dirty loads.
+    \item Check whether these two final values are \textbf{the same}.
+\end{enumerate}
+
+If the final dirty-load counts match, you print:
+\begin{verbatim}
+VERIFIED
+\end{verbatim}

@@ -1,0 +1,70 @@
+
+Online Assessment
+Date Taken: November 17th, 2025
+
+Q1:
+
+Given an array of integers, `arr`, you may perform 2 kinds of operations
+
+1. Reorder the elements of the array any way you like
+2. Decrease element's value to a minimum of 1
+
+If elements with consecutive indicies may not have a difference of more than 1,
+what is the maximum possible value for the last element of the array?
+
+The first element of the array must be 1.
+
+Q2:
+
+Given an array of integers, `arr`, and another integer, `maxSpread`, each integer
+in `arr` must be placed in a group such that for each group no two integers
+differ more than `maxSpread`. What is the minimum number of groups needed?
+
+---------------------------
+
+Virtual On-Site Interview
+Date Taken: December 2nd, 2025
+Interviewer: Christian Whimmer
+
+Implement an ordering function isBefore that compares two
+instructions in a compiler IR, and returns which instruction
+is structurally before the other.
+Assume you have a compiler intermediate representation
+for a machine-learning compiler that is based on loop-nests
+(= an AST structure).
+
+Assume that sometimes the IR changes a lot (many additions
+and deletions of instructions without isBefore calls
+in between), and sometimes many queries are performed
+(many isBefore calls without IR changes in between).
+
+A starting point for the IR is a class like this. You can
+and should add fields to this class, or add parameters to isBefore.
+You do not need to design an IR with a class hierarchy
+for different kinds of instructions (loops, conditions, ...).
+
+class Instruction {
+    opcode: ...
+    children: List<Instruction>
+}
+
+Example usage that compares the order of instructions:
+
+Instruction a = ...
+Instruction b = ...
+if isBefore(a, b) {
+    ...
+}
+
+Example:
+
+i10: loop
+    i5: add
+    i6: loop
+        i8: add
+    i7:loop
+        i9: add
+
+isBefore(i6, i5) -> False
+isBefore(i8, i9) -> True
+

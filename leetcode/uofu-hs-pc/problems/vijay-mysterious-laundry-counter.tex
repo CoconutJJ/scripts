@@ -1,0 +1,227 @@
+\section*{Vijay's Mysterious Laundry Counter}
+
+At the University of Utah's \textbf{Kahlert School of Computing}, Professor
+\textbf{Vijay} has ``modernized'' the \textbf{Hydrothermal Fabrication
+Laboratory} (the very serious grad-student laundromat).
+
+He installs a big digital display on the wall that shows a single number:
+
+\begin{quote}
+the \textbf{current number of finished laundry loads} for the day.
+\end{quote}
+
+Several student assistants help run the lab. During the day, they:
+\begin{itemize}[nosep]
+    \item Update the number on the display, and
+    \item Check the number to fill out various forms and reports.
+\end{itemize}
+
+To ``avoid crowding around the display,'' Vijay gives each assistant a quirky
+set of rules for how they record and apply changes.
+
+\subsection*{How the Assistants Work}
+
+There is:
+\begin{itemize}[nosep]
+    \item One \textbf{shared display} showing a single integer \(X\) (starting
+    from some initial value).
+    \item \(T\) assistants, numbered \(1\) through \(T\).
+\end{itemize}
+
+Each assistant keeps a \textbf{personal clipboard} where they write down planned
+updates \textbf{before} walking over to the display.
+
+Each assistant's program is a list of instructions of three kinds:
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item \texttt{WRITE v}
+    \begin{itemize}
+        \item The assistant writes down a note on their clipboard saying ``the
+        display should show \texttt{v}''.
+        \item This does \textbf{not} change the shared display yet.
+        \item The assistant keeps all such notes in order on their clipboard.
+    \end{itemize}
+
+    \item \texttt{POST}
+    \begin{itemize}
+        \item The assistant walks over to the display and applies \textbf{all of
+        their notes}, in order.
+        \item For each note with value \(v\), they set the display to \(v\).
+        \item After applying all notes, they clear their clipboard (no notes
+        left).
+    \end{itemize}
+
+    \item \texttt{CHECK}
+    \begin{itemize}
+        \item The assistant wants to read what the ``current'' number of
+        finished loads is.
+        \item However, they trust their own notes more than the distant display:
+        \begin{itemize}
+            \item If their clipboard has \textbf{at least one note}, they read
+            the value from the \textbf{most recent} note on their clipboard (the
+            last \texttt{WRITE} they did that hasn't been cleared by a
+            \texttt{POST}).
+            \item If their clipboard is \textbf{empty}, they read the value from
+            the shared display \(X\).
+        \end{itemize}
+        \item Whenever a \texttt{CHECK} happens, we want to \textbf{record} the
+        number they saw.
+    \end{itemize}
+\end{enumerate}
+
+Different assistants may have different lists of instructions.
+
+\subsection*{The Daily Schedule}
+
+You are also given a \textbf{schedule} for the day:
+\begin{itemize}
+    \item The schedule is a sequence of assistant IDs.
+    \item At step \(k\) of the day, the assistant with ID \(s_k\) performs
+    \textbf{their next instruction}, if they still have one.
+    \item If an assistant is scheduled but already finished all their
+    instructions, they simply do nothing at that step.
+\end{itemize}
+
+All assistants share the same display \(X\), but each one has their own
+clipboard of notes.
+
+Your job is to simulate this entire process and find out exactly what numbers
+were seen during all the \texttt{CHECK} operations.
+
+\subsection*{Input Format}
+
+\begin{enumerate}[label=\arabic*., leftmargin=*]
+    \item First line: three integers
+\begin{verbatim}
+T P X0
+\end{verbatim}
+    \begin{itemize}
+        \item \(T\) --- number of assistants (\(1 \le T \le 10\))
+        \item \(P\) --- length of the schedule (\(1 \le P \le 100000\))
+        \item \(X_0\) --- initial value shown on the display (\(0 \le X_0 \le
+        10^9\))
+    \end{itemize}
+
+    \item For each assistant \(i\) from \(1\) to \(T\):
+    \begin{itemize}
+        \item One line: integer \(n_i\) --- the number of instructions for
+        assistant \(i\)\\
+        (\(0 \le n_i \le 100000\), and the sum of all \(n_i\) over all
+        assistants \(\le 100000\))
+        \item Then \(n_i\) lines, each containing one instruction, in one of
+        these forms:
+        \begin{itemize}
+            \item \texttt{WRITE v} --- where \(0 \le v \le 10^9\)
+            \item \texttt{POST}
+            \item \texttt{CHECK}
+        \end{itemize}
+    \end{itemize}
+
+    \item Final line: \(P\) integers
+\begin{verbatim}
+s_1 s_2 ... s_P
+\end{verbatim}
+    Each \(s_k\) is in the range \(1..T\) and indicates that at step \(k\),
+    assistant \(s_k\) takes their next instruction (if any).
+\end{enumerate}
+
+If an assistant has no instructions left when chosen in the schedule, they do
+nothing for that step.
+
+You may assume that no invalid situations (like negative values) occur.
+
+\subsection*{Output Format}
+
+For \textbf{every} \texttt{CHECK} instruction executed during the schedule
+(across all assistants), print the value observed on its own line, in the exact
+order the \texttt{CHECK} operations happen.
+
+If there are \(K\) \texttt{CHECK} operations executed in total, your output
+should have exactly \(K\) lines.
+
+\subsection*{Example}
+
+\textbf{Input}
+\begin{verbatim}
+2 7 0
+3
+WRITE 5
+CHECK
+POST
+3
+WRITE 10
+CHECK
+POST
+1 2 1 2 1 2 2
+\end{verbatim}
+
+\textbf{Explanation}
+
+There are 2 assistants. Initial display value: \(X = 0\).
+
+Assistant 1's instructions:
+\begin{enumerate}[nosep]
+    \item \texttt{WRITE 5}
+    \item \texttt{CHECK}
+    \item \texttt{POST}
+\end{enumerate}
+
+Assistant 2's instructions:
+\begin{enumerate}[nosep]
+    \item \texttt{WRITE 10}
+    \item \texttt{CHECK}
+    \item \texttt{POST}
+\end{enumerate}
+
+Schedule: \(1\ 2\ 1\ 2\ 1\ 2\ 2\).
+
+\begin{itemize}
+    \item Step 1: assistant 1 \(\rightarrow\) \texttt{WRITE 5}
+    \begin{itemize}
+        \item Clipboard1: \([5]\), Clipboard2: \([]\)
+        \item Display \(X = 0\)
+    \end{itemize}
+
+    \item Step 2: assistant 2 \(\rightarrow\) \texttt{WRITE 10}
+    \begin{itemize}
+        \item Clipboard1: \([5]\), Clipboard2: \([10]\)
+        \item Display \(X = 0\)
+    \end{itemize}
+
+    \item Step 3: assistant 1 \(\rightarrow\) \texttt{CHECK}
+    \begin{itemize}
+        \item Clipboard1 not empty \(\Rightarrow\) sees last note: \(5\)
+        \item Output: \(5\)
+    \end{itemize}
+
+    \item Step 4: assistant 2 \(\rightarrow\) \texttt{CHECK}
+    \begin{itemize}
+        \item Clipboard2 not empty \(\Rightarrow\) sees last note: \(10\)
+        \item Output: \(10\)
+    \end{itemize}
+
+    \item Step 5: assistant 1 \(\rightarrow\) \texttt{POST}
+    \begin{itemize}
+        \item Applies notes in order: sets \(X = 5\)
+        \item Clipboard1 becomes empty
+    \end{itemize}
+
+    \item Step 6: assistant 2 \(\rightarrow\) \texttt{POST}
+    \begin{itemize}
+        \item Applies notes in order: sets \(X = 10\)
+        \item Clipboard2 becomes empty
+    \end{itemize}
+
+    \item Step 7: assistant 2 \(\rightarrow\) no instructions left, does
+    nothing.
+\end{itemize}
+
+Final \texttt{CHECK} results, in order:
+\begin{verbatim}
+5
+10
+\end{verbatim}
+
+Professor Vijay happily announces that this proves his ``laundry coordination
+rules'' are perfectly reasonable.
+
+The students are\ldots{} not entirely convinced.

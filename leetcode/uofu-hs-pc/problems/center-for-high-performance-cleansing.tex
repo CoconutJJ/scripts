@@ -1,0 +1,42 @@
+\section*{High-Throughput Textile Decontamination at the Center for High Performance Cleansing (CHPC)}
+
+The University of Utah takes pride in innovation, efficiency, and supporting
+students in every aspect of campus life.
+
+To that end, the university has established:
+\begin{quote}
+\textbf{The Center for High Performance Cleansing (CHPC)}
+\end{quote}
+
+Officially, CHPC is ``a multidisciplinary facility for advanced hydrothermal
+textile decontamination and surfactant dynamics research.''
+
+To maximize both sustainability and student success, CHPC runs a single,
+high-efficiency Decontamination Chamber (washer-dryer unit), and the university
+would like to use it as effectively as possible.
+
+Throughout the day, students, TAs, and faculty submit laundry ``experiments''
+(loads). Each load has:
+\begin{itemize}
+    \item \(\texttt{s}\): the earliest time the load can start.\\
+    This is when its owner and their laundry arrive at CHPC.
+    \item \(\texttt{f}\): the time the load would finish if started at
+    \(\texttt{s}\) and runs without interruption.
+\end{itemize}
+
+Once a load starts, it runs continuously until it finishes. No mid-cycle
+interruptions, no pausing ``just for one more sock.''
+
+Two loads conflict if their time intervals overlap in any way. Since CHPC is
+committed to safe and reliable operation, the Decontamination Chamber can only
+handle one load at a time.
+
+The university wants to show that CHPC significantly increases ``experimental
+throughput'' (and also clean clothes) by running as many loads as possible in a
+day.
+
+\medskip
+
+\noindent
+\textbf{Task.} What is the maximum number of non-conflicting loads that can be
+scheduled in the Decontamination Chamber?
