@@ -1,0 +1,129 @@
+#!/usr/bin/env python
+from math import log2
+from argparse import ArgumentParser
+
+def encode_rANS(data: bytes):
+
+    frequencies = dict()
+    
+    for b in data:
+        frequencies[b] = frequencies.get(b,0) + 1
+
+    cumulative_frequencies = dict()
+    curr_freq = 0
+    
+    for b, f in sorted(frequencies.items(), key=lambda r: r[0]):
+        cumulative_frequencies[b] = curr_freq
+        curr_freq += f
+
+    
+    current = len(data)
+    for b in data:
+        current = (current // frequencies[b]) * len(data) + (current % frequencies[b]) + cumulative_frequencies[b]
+        
+    return (current, frequencies)
+
+def decode_rANS(data: int, frequencies: dict[int, int]):
+
+    sum_freq = sum([frequencies[k] for k in frequencies])
+
+    cumulative_frequencies = dict()
+    curr_freq = 0
+    
+    for b, f in sorted(frequencies.items(), key=lambda r: r[0]):
+        cumulative_frequencies[b] = curr_freq
+        curr_freq += f    
+
+    freq_arr = sorted(cumulative_frequencies.items(), key=lambda r: r[1])
+
+    def decodeFrequency(freq: int):
+
+        l = 0
+        r = len(freq_arr) - 1
+
+        while l < r:
+
+            m = (l + r + 1) // 2
+
+            b, f = freq_arr[m]
+            
+            if f > freq:
+                r = m - 1
+            else:
+                l = m
+        
+        b, _ = freq_arr[l]
+
+        return b
+
+    payload = []
+    
+    while data > sum_freq:
+        slot = data % sum_freq
+
+        quotient = data // sum_freq
+        
+        b = decodeFrequency(slot)
+        
+        payload = [b] + payload
+                
+        data = frequencies[b] * quotient + slot - cumulative_frequencies[b]        
+        
+    return bytes(payload)
+
+def shannon_entropy(data: bytes):
+    if not data:
+        return 0.0, ""
+
+    frequencies = {}
+    for b in data:
+        frequencies[b] = frequencies.get(b, 0) + 1
+    
+    total_len = len(data)
+    
+    entropy = sum([
+        (count / total_len) * -log2(count / total_len) 
+        for count in frequencies.values()
+    ])
+
+    sorted_freqs = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
+    max_freq = max(frequencies.values())
+    chart_width = 40 
+    
+    art = [
+        "\n--- Information Profile ---",
+        f"Sequence Length: {total_len} bytes",
+        f"Shannon Entropy: {entropy:.4f} bits/symbol",
+        f"Theoretical Min: {entropy * total_len:.2f} total bits",
+        "---------------------------\n"
+    ]
+
+    for byte, count in sorted_freqs:
+        label = f"'{chr(byte)}'" if 32 <= byte <= 126 else f"0x{byte:02x}"
+        
+        bar_len = int((count / max_freq) * chart_width)
+        bar = "█" * bar_len
+        percentage = (count / total_len) * 100
+        
+        art.append(f"{label.rjust(6)} | {bar} {count} ({percentage:.1f}%)")
+
+    return entropy, "\n".join(art)
+       
+if __name__ == "__main__":
+
+    args = ArgumentParser()
+    args.add_argument("file")
+    args.add_argument("--method", choices=["compress", "decompress", "entropy"])
+    params = args.parse_args()
+    
+    with open(params.file, "rb") as f:
+        data = f.read()
+    
+    if params.method == "compress":    
+        compressed, frequencies = encode_rANS(data)
+        print(compressed)
+    # elif params.method == "decompress":
+        # data = decode_rANS() 
+    elif params.method == "entropy":
+        print(shannon_entropy(data)[1])
+        

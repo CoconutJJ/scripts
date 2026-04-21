@@ -1,0 +1,5 @@
+https://leetcode.com/problems/minimum-subarray-length-with-distinct-sum-at-least-k/description/
+
+https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/description/
+
+https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0/description/

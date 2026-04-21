@@ -62,7 +62,7 @@ int columns = 1; /* number of columns */
 int pageHeight = 792;
 int pageWidth = 612;
 
-unsigned char buf[1024];
+char buf[1024];
 unsigned long fpos = 0;
 
 void writestr (char *str)
