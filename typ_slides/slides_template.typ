@@ -21,6 +21,25 @@
   doc
 }
 
+#let fit-text(min: 0.3em, max: 1em, eps: 0.1em, body) = layout(size => {
+  let fits(text-size, body) = {
+    measure(width: size.width, { set text(text-size); body }).height <= size.height
+  }
+
+  if not fits(min, body) { 
+    panic("Content doesn't fit even at minimum text size") 
+  }
+  if fits(max, body) [#set text(max); #body] else {
+    let (a, b) = (min, max)
+    while b - a > eps {
+      let new = 0.5 * (a + b)
+      if fits(new, body) { a = new } else { b = new }
+    }
+    set text(a)
+    body
+  }
+})
+
 #let reveal(n, content) = context {
   // Use the unique slide ID to tag this metadata
   let id = slide-id-counter.get().first()
@@ -50,10 +69,9 @@
 }
 
 #let slide(body) = context {
-  slide-id-counter.step()
   slide-step-counter.update(0)
 
-  let id = slide-id-counter.get().first()
+  let id = slide-id-counter.get().first() + 1
   let reveals = query(label("step-" + str(id)))
   let max-n = 0
   for r in reveals {
@@ -62,17 +80,16 @@
     }
   }
 
+  
   for s in range(0, max-n + 1) {
     if here().page() >= 1 or s > 0 {
       pagebreak(weak: true)
     }
-
-    slide-step-counter.update(s)
-
-    // reset footnotes after every partial slide, this prevents partial slides from adding duplicate footnotes
     slide-footnotes.update(())
-
+    slide-step-counter.update(s)
+    slide-id-counter.step()
     body
+    
   }
 }
 
@@ -124,10 +141,8 @@
     ]
     #line(length: 100%, stroke: TextColor)
   ]
-  #block(height: 1fr)[
-    #align[
-      #body
-    ]
+  #block(height: 2fr)[
+    #body
   ]
   #place(bottom)[
     #context {

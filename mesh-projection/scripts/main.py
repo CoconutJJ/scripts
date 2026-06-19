@@ -23,7 +23,6 @@ def read_obj(
     # normals = []
     faces = []
 
-
     for l in file_lines:
         l = l.strip()
         if (match := vertex_pattern.match(l)) is not None:
@@ -116,6 +115,7 @@ def jarvis_march(verticies: np.ndarray[np.ndarray[np.float64, np.float64]]):
 
     return hull
 
+
 def project_onto_mesh(
     source: tuple[np.ndarray, np.ndarray],
     item: tuple[np.ndarray, np.ndarray],
@@ -131,17 +131,15 @@ def project_onto_mesh(
     zbuffer = dict()
     for iv in item_verts:
         for tri_idx in source_faces:
-
             tri = source_verts[tri_idx]
 
             p = project_onto_triangle(tri, direction, iv)
 
             if p is None:
                 continue
-            
+
             key = tuple(iv)
             if key in zbuffer:
-                
                 p_dist = np.linalg.norm(iv - p)
                 old_dist = np.linalg.norm(iv - zbuffer[key])
 
@@ -149,9 +147,6 @@ def project_onto_mesh(
                     zbuffer[key] = p
             else:
                 zbuffer[key] = p
-
-    
-
 
 
 def loop_subdivision(
